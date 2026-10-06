@@ -8,6 +8,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { ModalProvider } from "@/components/ModalContext";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://niagajaminannusantara.co.id"),
   title: "PT Niaga Jaminan Nusantara - Jasa Bank Garansi & Surety Bond Terpercaya",
   description:
     "Layanan penerbitan Bank Garansi dan Surety Bond cepat tanpa agunan (Non Collateral) dan dengan agunan (Collateral) untuk berbagai proyek di seluruh Indonesia. Resmi, legal, dan terdaftar OJK.",

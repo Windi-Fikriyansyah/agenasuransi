@@ -38,7 +38,7 @@ export default function SyaratKetentuan() {
 
   const openWhatsApp = () => {
     window.open(
-      "https://wa.me/6281346665545?text=Halo%20PT.%20ANUGRAH%20LUAS%20JAYA,%20saya%20ingin%20konsultasi%20mengenai%20persyaratan%20penerbitan%20Bank%20Garansi%20dan%20Surety%20Bond",
+      "https://wa.me/6282113189343?text=Halo%20PT.%20ANUGRAH%20LUAS%20JAYA,%20saya%20ingin%20konsultasi%20mengenai%20persyaratan%20penerbitan%20Bank%20Garansi%20dan%20Surety%20Bond",
       "_blank"
     );
   };
@@ -220,7 +220,7 @@ export default function SyaratKetentuan() {
                 </p>
                 <div className="mt-4">
                   <a
-                    href="https://wa.me/6281346665545?text=Halo%20PT.%20ANUGRAH%20LUAS%20JAYA,%20saya%20butuh%20bantuan%20konsultasi%20kelengkapan%20dokumen%20Bank%20Garansi"
+                    href="https://wa.me/6282113189343?text=Halo%20PT.%20ANUGRAH%20LUAS%20JAYA,%20saya%20butuh%20bantuan%20konsultasi%20kelengkapan%20dokumen%20Bank%20Garansi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs text-[#e5b842] hover:text-[#f5c542] font-bold inline-flex items-center gap-1 group"
@@ -530,7 +530,7 @@ export default function SyaratKetentuan() {
           </p>
           <div className="pt-3 flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/6281346665545"
+              href="https://wa.me/6282113189343"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-xl hover:scale-105"
