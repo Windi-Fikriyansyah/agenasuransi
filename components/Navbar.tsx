@@ -21,12 +21,63 @@ export default function Navbar() {
     }
   };
 
+  const handleTentangKamiClick = (e: React.MouseEvent) => {
+    if (pathname === "/tentang-kami") {
+      e.preventDefault();
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
+  const handleSyaratKetentuanClick = (e: React.MouseEvent) => {
+    if (pathname === "/syarat-ketentuan") {
+      e.preventDefault();
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-white text-slate-800 shadow-md transition-all border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo Brand */}
-          <Link href="/" className="flex items-center group py-1">
+          <Link href="/" onClick={handleHomeClick} className="flex items-center group py-1">
             <div className="relative transition-transform group-hover:scale-105">
               <Image
                 src="/images/logo.png"
@@ -43,44 +94,41 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-700">
             <Link
               href="/"
-              className={`transition-colors hover:text-[#b89328] ${
-                pathname === "/" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
-              }`}
+              onClick={handleHomeClick}
+              className={`transition-colors hover:text-[#b89328] ${pathname === "/" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+                }`}
             >
               Home
             </Link>
             <Link
               href="/tentang-kami"
-              className={`transition-colors hover:text-[#b89328] ${
-                pathname === "/tentang-kami" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
-              }`}
+              onClick={handleTentangKamiClick}
+              className={`transition-colors hover:text-[#b89328] ${pathname === "/tentang-kami" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+                }`}
             >
               Tentang Kami
             </Link>
             <Link
-              href="/#pelayanan"
-              className="hover:text-[#b89328] transition-colors"
+              href="/syarat-ketentuan"
+              onClick={handleSyaratKetentuanClick}
+              className={`transition-colors hover:text-[#b89328] ${pathname === "/syarat-ketentuan" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+                }`}
             >
-              Pelayanan
+              Syarat & Ketentuan
             </Link>
             <Link
               href="/#jenis-surety-bond"
               className="hover:text-[#b89328] transition-colors"
             >
-              Produk &amp; Layanan
+              Layanan Service
             </Link>
             <Link
               href="/#fungsi"
               className="hover:text-[#b89328] transition-colors"
             >
-              Dokumentasi
-            </Link>
-            <Link
-              href="/#mengapa-kami"
-              className="hover:text-[#b89328] transition-colors"
-            >
               Blog
             </Link>
+
             <Link
               href="/#kontak"
               className="hover:text-[#b89328] transition-colors"
@@ -163,45 +211,46 @@ export default function Navbar() {
         <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
           <Link
             href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className={`block py-2 border-b border-slate-100 ${
-              pathname === "/" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
-            }`}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              handleHomeClick(e);
+            }}
+            className={`block py-2 border-b border-slate-100 ${pathname === "/" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+              }`}
           >
             Home
           </Link>
           <Link
             href="/tentang-kami"
-            onClick={() => setMobileMenuOpen(false)}
-            className={`block py-2 border-b border-slate-100 ${
-              pathname === "/tentang-kami" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
-            }`}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              handleTentangKamiClick(e);
+            }}
+            className={`block py-2 border-b border-slate-100 ${pathname === "/tentang-kami" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+              }`}
           >
             Tentang Kami
           </Link>
           <Link
-            href="/#pelayanan"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+            href="/syarat-ketentuan"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              handleSyaratKetentuanClick(e);
+            }}
+            className={`block py-2 border-b border-slate-100 ${pathname === "/syarat-ketentuan" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+              }`}
           >
-            Pelayanan
+            Syarat & Ketentuan
           </Link>
           <Link
             href="/#jenis-surety-bond"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
           >
-            Produk &amp; Layanan
+            Layanan Service
           </Link>
           <Link
             href="/#fungsi"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
-          >
-            Dokumentasi
-          </Link>
-          <Link
-            href="/#mengapa-kami"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
           >

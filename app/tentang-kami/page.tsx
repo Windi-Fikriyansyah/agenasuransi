@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   ShieldCheck,
   Target,
@@ -19,6 +18,19 @@ import { useModal } from "@/components/ModalContext";
 export default function TentangKami() {
   const { openModal } = useModal();
 
+  React.useEffect(() => {
+    // Pastikan posisi scroll meluncur mulus (smooth) ke paling atas saat halaman Tentang Kami dibuka
+    if (typeof window !== "undefined") {
+      requestAnimationFrame(() => {
+        try {
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        } catch {
+          window.scrollTo(0, 0);
+        }
+      });
+    }
+  }, []);
+
   const openWhatsApp = () => {
     window.open(
       "https://wa.me/6282113189343?text=Halo%20PT%20Niaga%20Jaminan%20Nusantara,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Bank%20Garansi%20dan%20Surety%20Bond",
@@ -29,65 +41,9 @@ export default function TentangKami() {
   return (
     <div className="bg-[#060c1d] text-slate-100 min-h-screen">
       {/* ========================================================
-          1. HERO HEADER: TENTANG KAMI
+          PROFIL PERUSAHAAN (SESUAI CONTENT USER)
       ======================================================== */}
-      <section className="relative bg-gradient-to-b from-[#040816] via-[#070f26] to-[#060c1d] py-16 sm:py-24 border-b border-[#14234d] overflow-hidden">
-        {/* Glow Effects (Gold & Navy) */}
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#e5b842]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-10 right-1/4 w-96 h-96 bg-[#1a3a8f]/20 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl space-y-4">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-xs text-slate-300">
-              <Link href="/" className="hover:text-[#e5b842] transition-colors">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#e5b842] font-semibold">Tentang Kami</span>
-            </div>
-
-            {/* Gold Tag */}
-            <div>
-              <span className="text-[#e5b842] text-xs sm:text-sm font-bold tracking-widest uppercase">
-                TENTANG KAMI
-              </span>
-            </div>
-
-            {/* Main Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              PT Niaga Jaminan Nusantara
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Mitra terpercaya dalam menyediakan solusi jaminan dan perlindungan risiko bisnis di Indonesia untuk mendukung kelancaran tender, pengadaan, dan proyek Anda.
-            </p>
-
-            <div className="pt-2 flex flex-wrap gap-4">
-              <button
-                onClick={openModal}
-                className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-lg"
-              >
-                <span>Konsultasi Sekarang</span>
-                <ChevronRight className="w-4 h-4 stroke-[3]" />
-              </button>
-              <button
-                onClick={openWhatsApp}
-                className="border border-[#1f3775] hover:border-[#e5b842] text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-lg inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] cursor-pointer"
-              >
-                <MessageCircle className="w-4 h-4 text-[#e5b842]" />
-                <span>Chat WhatsApp</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          2. PROFIL PERUSAHAAN (SESUAI CONTENT USER)
-      ======================================================== */}
-      <section className="py-16 sm:py-24 border-b border-[#14234d] bg-[#070f26]">
+      <section id="tentang-kami" className="py-16 sm:py-24 border-b border-[#14234d] bg-[#070f26] scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Graphic Banner Card */}

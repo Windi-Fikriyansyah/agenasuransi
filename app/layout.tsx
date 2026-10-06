@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ConsultationModal from "@/components/ConsultationModal";
+import ScrollToTop from "@/components/ScrollToTop";
 import { ModalProvider } from "@/components/ModalContext";
 
 export const metadata: Metadata = {
@@ -37,12 +38,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="scroll-smooth">
+    <html lang="id" data-scroll-behavior="smooth" className="scroll-smooth">
       <head>
         <link rel="icon" href="/images/logo.png" />
       </head>
       <body className="min-h-screen bg-[#060c1d] text-slate-100 antialiased selection:bg-[#e5b842] selection:text-[#040814] flex flex-col">
         <ModalProvider>
+          {/* Scroll to Top on Route Navigation */}
+          <ScrollToTop />
+
           {/* Header Tetap (Persistent Navbar) */}
           <Navbar />
 
