@@ -89,6 +89,23 @@ export default function Navbar() {
     }
   };
 
+  const handleKontakClick = (e: React.MouseEvent) => {
+    if (pathname === "/kontak-kami" || pathname === "/kontak") {
+      e.preventDefault();
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-white text-slate-800 shadow-md transition-all border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -149,8 +166,10 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/#kontak"
-              className="hover:text-[#b89328] transition-colors"
+              href="/kontak-kami"
+              onClick={handleKontakClick}
+              className={`transition-colors hover:text-[#b89328] ${pathname === "/kontak-kami" || pathname === "/kontak" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+                }`}
             >
               Kontak Kami
             </Link>
@@ -280,9 +299,13 @@ export default function Navbar() {
             Blog
           </Link>
           <Link
-            href="/#kontak"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+            href="/kontak-kami"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              handleKontakClick(e);
+            }}
+            className={`block py-2 border-b border-slate-100 ${pathname === "/kontak-kami" || pathname === "/kontak" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+              }`}
           >
             Kontak Kami
           </Link>
