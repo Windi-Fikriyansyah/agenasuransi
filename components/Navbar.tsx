@@ -4,22 +4,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 import { useModal } from "./ModalContext";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
   const { openModal } = useModal();
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      alert(`Mencari informasi tentang: "${searchQuery}"`);
-    }
-  };
 
   const handleTentangKamiClick = (e: React.MouseEvent) => {
     if (pathname === "/tentang-kami") {
@@ -197,15 +188,6 @@ export default function Navbar() {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-4">
             <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 text-slate-600 hover:text-[#0b1536] hover:bg-slate-100 rounded-full transition-all cursor-pointer"
-              title="Cari"
-              aria-label="Cari informasi"
-            >
-              <Search className="w-5 h-5" />
-            </button>
-
-            <button
               onClick={openModal}
               className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs uppercase tracking-wider px-4 py-2.5 rounded-md transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
             >
@@ -214,16 +196,8 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile & Tablet Toggle (Search & Hamburger) */}
-          <div className="flex lg:hidden items-center gap-1.5 sm:gap-2">
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 text-slate-700 hover:text-[#b89328] rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
-              aria-label="Cari informasi"
-              title="Cari"
-            >
-              <Search className="w-5 h-5" />
-            </button>
+          {/* Mobile & Tablet Toggle (Hamburger Menu) */}
+          <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-slate-800 hover:text-[#b89328] rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
@@ -238,31 +212,6 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-
-        {/* Quick Search Dropdown Bar */}
-        {searchOpen && (
-          <div className="py-3 border-t border-slate-100">
-            <form onSubmit={handleSearchSubmit} className="flex items-center gap-2">
-              <div className="relative flex-1">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Cari layanan (contoh: Bid Bond, Bank Garansi, Syarat)..."
-                  className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:outline-none focus:border-[#d4af37]"
-                  autoFocus
-                />
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
-              </div>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-[#0a1536] hover:bg-[#112258] text-[#f5c542] text-xs font-bold rounded-lg cursor-pointer"
-              >
-                Cari
-              </button>
-            </form>
-          </div>
-        )}
       </div>
 
       {/* Mobile Navigation Drawer */}
