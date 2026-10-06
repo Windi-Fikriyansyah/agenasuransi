@@ -1,0 +1,232 @@
+"use client";
+
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Search, Phone, Menu, X } from "lucide-react";
+import { useModal } from "./ModalContext";
+
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const pathname = usePathname();
+  const { openModal } = useModal();
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      alert(`Mencari informasi tentang: "${searchQuery}"`);
+    }
+  };
+
+  return (
+    <header className="sticky top-0 z-40 bg-white text-slate-800 shadow-md transition-all border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo Brand */}
+          <Link href="/" className="flex items-center group py-1">
+            <div className="relative transition-transform group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="PT NIAGA JAMINAN NUSANTARA"
+                width={220}
+                height={60}
+                className="h-10 sm:h-12 w-auto object-contain"
+                priority
+              />
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-700">
+            <Link
+              href="/"
+              className={`transition-colors hover:text-[#b89328] ${
+                pathname === "/" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              href="/tentang-kami"
+              className={`transition-colors hover:text-[#b89328] ${
+                pathname === "/tentang-kami" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+              }`}
+            >
+              Tentang Kami
+            </Link>
+            <Link
+              href="/#pelayanan"
+              className="hover:text-[#b89328] transition-colors"
+            >
+              Pelayanan
+            </Link>
+            <Link
+              href="/#jenis-surety-bond"
+              className="hover:text-[#b89328] transition-colors"
+            >
+              Produk &amp; Layanan
+            </Link>
+            <Link
+              href="/#fungsi"
+              className="hover:text-[#b89328] transition-colors"
+            >
+              Dokumentasi
+            </Link>
+            <Link
+              href="/#mengapa-kami"
+              className="hover:text-[#b89328] transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#kontak"
+              className="hover:text-[#b89328] transition-colors"
+            >
+              Kontak Kami
+            </Link>
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="p-2 text-slate-600 hover:text-[#0b1536] hover:bg-slate-100 rounded-full transition-all cursor-pointer"
+              title="Cari"
+              aria-label="Cari informasi"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={openModal}
+              className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs uppercase tracking-wider px-4 py-2.5 rounded-md transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Konsultasi</span>
+            </button>
+          </div>
+
+          {/* Mobile Hamburger Toggle */}
+          <div className="flex md:hidden items-center gap-2">
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="p-2 text-slate-700 hover:text-[#b89328] cursor-pointer"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-slate-800 hover:text-[#b89328] cursor-pointer"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Quick Search Dropdown Bar */}
+        {searchOpen && (
+          <div className="py-3 border-t border-slate-100">
+            <form onSubmit={handleSearchSubmit} className="flex items-center gap-2">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Cari layanan (contoh: Bid Bond, Bank Garansi, Syarat)..."
+                  className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:outline-none focus:border-[#d4af37]"
+                  autoFocus
+                />
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+              </div>
+              <button
+                type="submit"
+                className="px-4 py-2 bg-[#0a1536] hover:bg-[#112258] text-[#f5c542] text-xs font-bold rounded-lg cursor-pointer"
+              >
+                Cari
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Navigation Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
+          <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`block py-2 border-b border-slate-100 ${
+              pathname === "/" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+            }`}
+          >
+            Home
+          </Link>
+          <Link
+            href="/tentang-kami"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`block py-2 border-b border-slate-100 ${
+              pathname === "/tentang-kami" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+            }`}
+          >
+            Tentang Kami
+          </Link>
+          <Link
+            href="/#pelayanan"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+          >
+            Pelayanan
+          </Link>
+          <Link
+            href="/#jenis-surety-bond"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+          >
+            Produk &amp; Layanan
+          </Link>
+          <Link
+            href="/#fungsi"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+          >
+            Dokumentasi
+          </Link>
+          <Link
+            href="/#mengapa-kami"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/#kontak"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+          >
+            Kontak Kami
+          </Link>
+          <div className="pt-2">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openModal();
+              }}
+              className="w-full bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] text-[#070f26] font-extrabold py-3 rounded-md text-sm uppercase tracking-wider text-center cursor-pointer shadow-md"
+            >
+              Konsultasi Sekarang
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

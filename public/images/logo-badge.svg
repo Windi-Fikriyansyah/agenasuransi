@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="46" fill="#ffffff" stroke="#1e3a8a" stroke-width="5"/>
+  <circle cx="50" cy="50" r="39" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="3 2"/>
+  <rect x="18" y="40" width="64" height="22" rx="3" fill="#dc2626"/>
+  <text x="50" y="57" text-anchor="middle" fill="#ffffff" font-family="'Arial Black', Impact, sans-serif" font-size="22" font-weight="900" letter-spacing="2">ALJ</text>
+  <path d="M35 27 Q50 20 65 27" stroke="#1e3a8a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M35 73 Q50 80 65 73" stroke="#1e3a8a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="50" cy="23" r="3" fill="#1e3a8a"/>
+  <circle cx="50" cy="77" r="3" fill="#1e3a8a"/>
+</svg>

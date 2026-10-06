@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" fill="none">
+  <!-- Circular Badge -->
+  <g transform="translate(5, 5)">
+    <circle cx="30" cy="30" r="28" fill="#ffffff" stroke="#1d4ed8" stroke-width="3"/>
+    <circle cx="30" cy="30" r="24" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="2 1"/>
+    <!-- Red ribbon banner in middle -->
+    <path d="M12 25 H48 V38 H12 Z" fill="#dc2626" rx="2"/>
+    <text x="30" y="35" text-anchor="middle" fill="#ffffff" font-family="'Arial Black', Impact, sans-serif" font-size="14" font-weight="900" letter-spacing="1">ALJ</text>
+    <!-- Stars or arc -->
+    <path d="M22 17 Q30 13 38 17" stroke="#1d4ed8" stroke-width="2" fill="none"/>
+    <path d="M22 43 Q30 47 38 43" stroke="#1d4ed8" stroke-width="2" fill="none"/>
+  </g>
+  <!-- Brand text -->
+  <g transform="translate(75, 18)">
+    <text x="0" y="16" fill="#0f172a" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" letter-spacing="0.5">PT ANUGRAH LUAS JAYA</text>
+    <text x="0" y="32" fill="#2563eb" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="0.8">BANK GARANSI &amp; SURETY BOND</text>
+  </g>
+</svg>
