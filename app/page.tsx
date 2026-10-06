@@ -42,25 +42,25 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#060c1d] text-slate-100 flex flex-col font-sans">
+    <div className="bg-[#060c1d] text-slate-100 flex flex-col font-sans overflow-x-hidden">
       {/* ========================================================
           1. HERO SECTION
       ======================================================== */}
-      <section id="home" className="relative bg-[#060c1d] pt-12 pb-16 lg:py-24 overflow-hidden border-b border-[#14234d]">
+      <section id="home" className="relative bg-[#060c1d] pt-10 sm:pt-12 pb-14 sm:pb-16 lg:py-24 overflow-hidden border-b border-[#14234d]">
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#e5b842]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 right-10 w-96 h-96 bg-[#1a3a8f]/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <div className="inline-block">
                 <span className="text-[#e5b842] text-xs sm:text-sm font-bold tracking-wider uppercase">
                   PT NIAGA JAMINAN NUSANTARA
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold text-white tracking-tight leading-[1.15]">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold text-white tracking-tight leading-snug lg:leading-[1.15]">
                 Jasa Bank Garansi &amp; Surety Bond Terpercaya di Indonesia
               </h1>
 
@@ -68,10 +68,10 @@ export default function Home() {
                 Layanan Penerbitan Bank Garansi dan Surety Bond cepat tanpa agunan (Non Collateral) dan dengan agunan (Collateral) untuk berbagai keperluan proyek pemerintah maupun swasta di seluruh wilayah Indonesia. Proses mudah, syarat ringan, legalitas resmi, dan terdaftar di OJK.
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <button
                   onClick={openModal}
-                  className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-md inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-lg"
+                  className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-md inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-lg"
                 >
                   <span>KONSULTASI SEKARANG</span>
                   <ChevronRight className="w-4 h-4 stroke-[3]" />
@@ -79,7 +79,7 @@ export default function Home() {
 
                 <button
                   onClick={openWhatsAppDirect}
-                  className="border border-[#1f3775] hover:border-[#e5b842] text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-md inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] cursor-pointer"
+                  className="w-full sm:w-auto justify-center border border-[#1f3775] hover:border-[#e5b842] text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-md inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 text-[#e5b842]" />
                   <span>Chat WhatsApp</span>
@@ -108,7 +108,7 @@ export default function Home() {
 
             {/* Right Graphic Column: Gold Handshake Medallion */}
             <div className="lg:col-span-5 flex justify-center items-center">
-              <div className="relative group max-w-[340px] sm:max-w-[380px] w-full">
+              <div className="relative group max-w-[260px] xs:max-w-[290px] sm:max-w-[340px] lg:max-w-[380px] w-full mx-auto">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/30 via-yellow-400/20 to-blue-600/30 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition duration-700 animate-pulse" />
 
                 <div className="relative aspect-square rounded-full p-2 bg-gradient-to-b from-amber-400/50 via-[#101e4a] to-[#040816] shadow-2xl">
@@ -298,7 +298,7 @@ export default function Home() {
                 <div>
                   <button
                     onClick={openModal}
-                    className="bg-[#070f26] hover:bg-[#0b1638] text-[#f5c542] hover:text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 py-3 rounded-lg inline-flex items-center gap-2 transition-all cursor-pointer shadow-md hover:shadow-xl"
+                    className="w-full sm:w-auto justify-center bg-[#070f26] hover:bg-[#0b1638] text-[#f5c542] hover:text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 py-3 rounded-lg inline-flex items-center gap-2 transition-all cursor-pointer shadow-md hover:shadow-xl"
                   >
                     <span>KONSULTASI GRATIS</span>
                     <ChevronRight className="w-4 h-4 stroke-[3]" />
@@ -444,7 +444,7 @@ export default function Home() {
                     Solusi jaminan untuk berbagai kebutuhan kontraktual, proyek, pengadaan, dan kegiatan bisnis sesuai persyaratan yang berlaku.
                   </p>
                 </div>
-                <div className="mt-5 pt-3 border-t border-[#1b2f69] flex items-center justify-between text-xs text-slate-400">
+                <div className="mt-5 pt-3 border-t border-[#1b2f69] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-xs text-slate-400">
                   <span>Mitra Bank BUMN &amp; Bank Swasta Nasional</span>
                   <span className="text-[#e5b842] font-semibold">Tersedia Non-Collateral</span>
                 </div>
@@ -703,7 +703,7 @@ export default function Home() {
                 <p className="text-slate-300 text-sm leading-relaxed">
                   PT Niaga Jaminan Nusantara dibangun dengan fokus pada penyediaan solusi Bank Guarantee, Surety Bond, dan General Insurance untuk berbagai kebutuhan bisnis dan proyek.
                 </p>
-                <div className="mt-6 pt-6 border-t border-[#1b2f69] flex items-center justify-between text-xs text-[#e5b842] font-bold">
+                <div className="mt-6 pt-6 border-t border-[#1b2f69] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#e5b842] font-bold">
                   <span>Profesional &amp; Responsif</span>
                   <span>Pendekatan Konsultatif</span>
                 </div>
@@ -824,7 +824,7 @@ export default function Home() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
             Niaga Jaminan Nusantara Penerbitan Jaminan
           </h2>
 
@@ -835,7 +835,7 @@ export default function Home() {
           <div className="pt-4">
             <button
               onClick={openModal}
-              className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-xl hover:scale-105"
+              className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-xl hover:scale-105"
             >
               <span>KONSULTASI GRATIS SEKARANG</span>
               <ChevronRight className="w-4 h-4 stroke-[3]" />

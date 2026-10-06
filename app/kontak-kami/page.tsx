@@ -152,67 +152,67 @@ export default function KontakKamiPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="bg-[#060c1d] text-slate-100 min-h-screen">
+      <div className="bg-[#060c1d] text-slate-100 min-h-screen overflow-x-hidden">
         {/* ========================================================
             LANGSUNG KE BAGIAN KONTAK FORM & DETAIL (TANPA HERO SECTION)
         ======================================================== */}
         <section
           id="kontak-utama"
-          className="py-12 sm:py-16 border-b border-[#14234d] bg-[#060c1d] scroll-mt-24"
+          className="py-10 sm:py-16 border-b border-[#14234d] bg-[#060c1d] scroll-mt-24"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section Singkat & Lugas */}
-            <div className="mb-10 pb-6 border-b border-[#14234d]">
+            <div className="mb-8 sm:mb-10 pb-5 sm:pb-6 border-b border-[#14234d]">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0b1638] border border-[#1b2f69] mb-2">
-                    <Building2 className="w-3.5 h-3.5 text-[#e5b842]" />
+                    <Building2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                     <span className="text-[#e5b842] text-[11px] font-bold tracking-widest uppercase">
                       PT NIAGA JAMINAN NUSANTARA
                     </span>
                   </div>
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
                     Kontak &amp; Formulir Konsultasi Proyek
                   </h1>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl">
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
                     Hubungi konsultan kami atau isi formulir di bawah ini untuk konsultasi kelayakan dokumen tender dan penerbitan Bank Garansi &amp; Surety Bond tanpa agunan. Respon cepat dalam 10-15 menit.
                   </p>
                 </div>
 
                 {/* Quick Response Badge */}
-                <div className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0b1638] border border-[#e5b842]/40 text-xs text-[#e5b842] font-semibold">
-                  <Zap className="w-4 h-4 fill-current text-[#e5b842]" />
+                <div className="shrink-0 flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-[#0b1638] border border-[#e5b842]/40 text-xs text-[#e5b842] font-semibold self-start md:self-auto">
+                  <Zap className="w-4 h-4 fill-current text-[#e5b842] shrink-0" />
                   <span>Respon Cepat WhatsApp 24 Jam</span>
                 </div>
               </div>
             </div>
 
             {/* Grid 2 Kolom: Contact Form & Kontak Detail */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start">
               {/* ========================================================
                   KOLOM 1: CONTACT FORM
               ======================================================== */}
-              <div className="lg:col-span-7 bg-[#070f26] border border-[#1b2f69] rounded-2xl p-6 sm:p-8 shadow-2xl relative">
-                <div className="mb-6 pb-4 border-b border-[#14234d]">
+              <div className="lg:col-span-7 bg-[#070f26] border border-[#1b2f69] rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl relative">
+                <div className="mb-5 sm:mb-6 pb-4 border-b border-[#14234d]">
                   <span className="text-[#e5b842] text-xs font-bold uppercase tracking-wider block">
                     FORMULIR KONTAK
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+                  <h2 className="text-lg sm:text-2xl font-extrabold text-white mt-1">
                     Kirim Pesan Kepada Kami
                   </h2>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
                     Silakan isi nama, email, dan pesan Anda di bawah ini. Tim kami akan segera menindaklanjuti.
                   </p>
                 </div>
 
                 {submitted && (
-                  <div className="mb-6 p-4 rounded-xl bg-[#0b291d] border border-emerald-500/50 flex items-start gap-3 text-emerald-200 text-xs sm:text-sm">
+                  <div className="mb-5 sm:mb-6 p-4 rounded-xl bg-[#0b291d] border border-emerald-500/50 flex items-start gap-3 text-emerald-200 text-xs sm:text-sm">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
                       <strong className="block font-bold text-white">
                         Pesan Berhasil Terkirim!
                       </strong>
-                      <span>
+                      <span className="leading-relaxed block mt-0.5">
                         Jendela chat WhatsApp konsultan telah dibuka dengan format pesan Anda. Kami akan segera merespons pertanyaan Anda.
                       </span>
                     </div>
@@ -233,7 +233,7 @@ export default function KontakKamiPage() {
                         setFormData({ ...formData, nama: e.target.value })
                       }
                       placeholder="Masukkan nama lengkap Anda"
-                      className="w-full px-3.5 py-2.5 bg-[#0b1638] border border-[#1b2f69] rounded-xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#e5b842] transition-colors"
+                      className="w-full px-3.5 py-2.5 sm:py-3 bg-[#0b1638] border border-[#1b2f69] rounded-xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#e5b842] transition-colors"
                     />
                   </div>
 
@@ -250,7 +250,7 @@ export default function KontakKamiPage() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       placeholder="nama@email.com"
-                      className="w-full px-3.5 py-2.5 bg-[#0b1638] border border-[#1b2f69] rounded-xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#e5b842] transition-colors"
+                      className="w-full px-3.5 py-2.5 sm:py-3 bg-[#0b1638] border border-[#1b2f69] rounded-xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#e5b842] transition-colors"
                     />
                   </div>
 
@@ -267,12 +267,12 @@ export default function KontakKamiPage() {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       placeholder="Tuliskan pesan, pertanyaan, atau rincian kebutuhan Anda di sini..."
-                      className="w-full px-3.5 py-2.5 bg-[#0b1638] border border-[#1b2f69] rounded-xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#e5b842] resize-none transition-colors"
+                      className="w-full px-3.5 py-2.5 sm:py-3 bg-[#0b1638] border border-[#1b2f69] rounded-xl text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#e5b842] resize-none transition-colors"
                     />
                   </div>
 
                   {/* Security Guarantee Note */}
-                  <div className="flex items-center gap-2 text-[11px] text-slate-300 bg-[#0b1638] p-3 rounded-xl border border-[#152758]">
+                  <div className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-300 bg-[#0b1638] p-3 rounded-xl border border-[#152758]">
                     <ShieldCheck className="w-4 h-4 text-[#e5b842] shrink-0" />
                     <span>
                       <strong>Jaminan Privasi:</strong> Data dan pesan Anda terjamin 100% aman dan rahasia.
@@ -283,9 +283,9 @@ export default function KontakKamiPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider py-3.5 rounded-xl flex items-center justify-center gap-2 gold-glow-btn cursor-pointer shadow-xl hover:scale-[1.01] transition-all disabled:opacity-70"
+                    className="w-full bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider py-3.5 rounded-xl flex items-center justify-center gap-2 gold-glow-btn cursor-pointer shadow-xl hover:scale-[1.01] active:scale-95 transition-all disabled:opacity-70 text-center"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4 shrink-0" />
                     <span>
                       {isSubmitting
                         ? "Mengirimkan Pesan..."
@@ -298,14 +298,14 @@ export default function KontakKamiPage() {
               {/* ========================================================
                   KOLOM 2: KONTAK DETAIL & LOKASI KANTOR
               ======================================================== */}
-              <div className="lg:col-span-5 space-y-6">
+              <div className="lg:col-span-5 space-y-5 sm:space-y-6">
                 {/* Kartu Detail Kontak Utama */}
-                <div className="bg-[#070f26] border border-[#1b2f69] rounded-2xl p-6 sm:p-7 shadow-2xl space-y-5">
+                <div className="bg-[#070f26] border border-[#1b2f69] rounded-2xl p-4 sm:p-6 md:p-7 shadow-2xl space-y-4 sm:space-y-5">
                   <div className="pb-3 border-b border-[#14234d]">
                     <span className="text-[#e5b842] text-xs font-bold uppercase tracking-wider block">
                       INFORMASI RESMI
                     </span>
-                    <h3 className="text-lg sm:text-xl font-extrabold text-white mt-0.5">
+                    <h3 className="text-base sm:text-xl font-extrabold text-white mt-0.5">
                       Kontak Detail Perusahaan
                     </h3>
                   </div>
@@ -315,14 +315,14 @@ export default function KontakKamiPage() {
                     <div className="w-8 h-8 rounded-lg bg-[#0b1638] border border-[#1b2f69] flex items-center justify-center text-[#e5b842] shrink-0 mt-0.5">
                       <MapPin className="w-4 h-4" />
                     </div>
-                    <div className="space-y-0.5">
-                      <span className="text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
+                    <div className="space-y-0.5 min-w-0 flex-1">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
                         Kantor Operasional
                       </span>
-                      <strong className="text-white block font-bold">
+                      <strong className="text-white block font-bold leading-snug">
                         Gedung Graha Surveyor Indonesia Lantai 15
                       </strong>
-                      <p className="text-slate-300 text-xs leading-relaxed">
+                      <p className="text-slate-300 text-xs leading-relaxed mt-0.5">
                         Jl. Gatot Subroto Kav. 56, Kuningan Barat, Mampang Prapatan, Jakarta Selatan, DKI Jakarta 12950
                       </p>
                     </div>
@@ -333,25 +333,25 @@ export default function KontakKamiPage() {
                     <div className="w-8 h-8 rounded-lg bg-[#0b1638] border border-[#25D366]/40 flex items-center justify-center text-[#25D366] shrink-0 mt-0.5">
                       <MessageCircle className="w-4 h-4 fill-current" />
                     </div>
-                    <div className="flex-1 space-y-0.5">
-                      <span className="text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
+                    <div className="flex-1 space-y-0.5 min-w-0">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
                         WhatsApp Konsultan (Chat Cepat)
                       </span>
                       <a
                         href="https://wa.me/6282113189343"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-white font-bold hover:text-[#25D366] transition-colors block text-sm"
+                        className="text-white font-bold hover:text-[#25D366] transition-colors block text-xs sm:text-sm"
                       >
                         0821-1318-9343
                       </a>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[10px] sm:text-[11px] text-slate-400">
                         Layanan konsultasi online siap merespons 24/7.
                       </p>
                     </div>
                     <button
                       onClick={() => openDirectWhatsApp()}
-                      className="text-xs bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/50 px-3 py-1.5 rounded-lg hover:bg-[#25D366] hover:text-[#070f26] font-bold transition-all shrink-0 cursor-pointer"
+                      className="text-xs bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/50 px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-[#25D366] hover:text-[#070f26] font-bold transition-all shrink-0 cursor-pointer"
                     >
                       Chat
                     </button>
@@ -362,23 +362,23 @@ export default function KontakKamiPage() {
                     <div className="w-8 h-8 rounded-lg bg-[#0b1638] border border-[#1b2f69] flex items-center justify-center text-[#e5b842] shrink-0 mt-0.5">
                       <Phone className="w-4 h-4" />
                     </div>
-                    <div className="flex-1 space-y-0.5">
-                      <span className="text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
+                    <div className="flex-1 space-y-0.5 min-w-0">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
                         Hotline Telepon
                       </span>
                       <a
-                        href="tel:081140665585"
-                        className="text-white font-bold hover:text-[#e5b842] transition-colors block text-sm"
+                        href="tel:082113189343"
+                        className="text-white font-bold hover:text-[#e5b842] transition-colors block text-xs sm:text-sm"
                       >
-                        0811-4066-5585
+                        0821-1318-9343
                       </a>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[10px] sm:text-[11px] text-slate-400">
                         Telepon langsung tim representatif kami.
                       </p>
                     </div>
                     <a
-                      href="tel:081140665585"
-                      className="text-xs bg-[#0b1638] text-slate-200 border border-[#1b2f69] hover:border-[#e5b842] px-3 py-1.5 rounded-lg hover:text-[#e5b842] font-semibold transition-all shrink-0"
+                      href="tel:082113189343"
+                      className="text-xs bg-[#0b1638] text-slate-200 border border-[#1b2f69] hover:border-[#e5b842] px-2.5 sm:px-3 py-1.5 rounded-lg hover:text-[#e5b842] font-semibold transition-all shrink-0"
                     >
                       Panggil
                     </a>
@@ -389,17 +389,17 @@ export default function KontakKamiPage() {
                     <div className="w-8 h-8 rounded-lg bg-[#0b1638] border border-[#1b2f69] flex items-center justify-center text-[#e5b842] shrink-0 mt-0.5">
                       <Mail className="w-4 h-4" />
                     </div>
-                    <div className="space-y-0.5">
-                      <span className="text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
+                    <div className="space-y-0.5 min-w-0 flex-1">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
                         Email Resmi
                       </span>
                       <a
                         href="mailto:info@anugrahluasjaya.co.id"
-                        className="text-slate-200 hover:text-[#e5b842] transition-colors block text-xs font-semibold"
+                        className="text-slate-200 hover:text-[#e5b842] transition-colors block text-xs font-semibold truncate"
                       >
                         info@anugrahluasjaya.co.id
                       </a>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[10px] sm:text-[11px] text-slate-400">
                         Kirimkan berkas RKS / Dokumen Pemilihan tender via email.
                       </p>
                     </div>
@@ -410,27 +410,27 @@ export default function KontakKamiPage() {
                     <div className="w-8 h-8 rounded-lg bg-[#0b1638] border border-[#1b2f69] flex items-center justify-center text-[#e5b842] shrink-0 mt-0.5">
                       <Clock className="w-4 h-4" />
                     </div>
-                    <div className="space-y-1">
-                      <span className="text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#e5b842] uppercase tracking-wider block">
                         Jam Operasional Kantor
                       </span>
-                      <div className="text-xs text-slate-300 space-y-0.5">
-                        <div className="flex justify-between gap-4">
+                      <div className="text-xs text-slate-300 space-y-1">
+                        <div className="flex justify-between gap-2">
                           <span>Senin – Jumat:</span>
                           <span className="font-semibold text-white">
                             08.00 – 18.00 WIB
                           </span>
                         </div>
-                        <div className="flex justify-between gap-4">
+                        <div className="flex justify-between gap-2">
                           <span>Sabtu:</span>
                           <span className="font-semibold text-white">
                             08.00 – 14.00 WIB
                           </span>
                         </div>
-                        <div className="flex justify-between gap-4">
+                        <div className="flex flex-col xs:flex-row justify-between gap-0.5">
                           <span>Minggu &amp; Libur:</span>
                           <span className="text-[#e5b842] font-semibold">
-                            Layanan WhatsApp Tetap Aktif
+                            Layanan WA Tetap Aktif
                           </span>
                         </div>
                       </div>
@@ -439,11 +439,11 @@ export default function KontakKamiPage() {
                 </div>
 
                 {/* Kartu Peta Lokasi Interaktif (Google Maps Embed) */}
-                <div className="bg-[#070f26] border border-[#1b2f69] rounded-2xl p-5 shadow-2xl space-y-3">
+                <div className="bg-[#070f26] border border-[#1b2f69] rounded-2xl p-4 sm:p-5 shadow-2xl space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-[#e5b842]" />
-                      <h4 className="text-sm font-bold text-white">
+                      <h4 className="text-xs sm:text-sm font-bold text-white">
                         Peta Lokasi Graha Surveyor
                       </h4>
                     </div>
@@ -459,7 +459,7 @@ export default function KontakKamiPage() {
                   </div>
 
                   {/* Google Maps Iframe */}
-                  <div className="rounded-xl overflow-hidden border border-[#14234d] h-48 sm:h-56 w-full relative bg-[#091228]">
+                  <div className="rounded-xl overflow-hidden border border-[#14234d] h-44 sm:h-56 w-full relative bg-[#091228]">
                     <iframe
                       title="Lokasi Kantor PT Niaga Jaminan Nusantara"
                       src="https://maps.google.com/maps?q=Graha+Surveyor+Indonesia+Jl+Gatot+Subroto+Kav+56+Jakarta+Selatan&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -473,15 +473,15 @@ export default function KontakKamiPage() {
                     />
                   </div>
 
-                  <p className="text-[11px] text-slate-400 text-center">
+                  <p className="text-[10px] sm:text-[11px] text-slate-400 text-center">
                     Lokasi strategis di koridor Gatot Subroto, dekat kawasan Kuningan &amp; Semanggi Jakarta Selatan.
                   </p>
                 </div>
 
                 {/* Kartu Wilayah Layanan & Fasilitas */}
-                <div className="p-5 rounded-2xl bg-gradient-to-br from-[#0b1638] to-[#070f26] border border-[#1b2f69] space-y-3">
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#0b1638] to-[#070f26] border border-[#1b2f69] space-y-3">
                   <h4 className="text-xs font-bold text-[#e5b842] uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                     <span>Layanan Penjaminan Seluruh Indonesia</span>
                   </h4>
                   <div className="grid grid-cols-2 gap-2 text-xs text-slate-300">
@@ -517,8 +517,8 @@ export default function KontakKamiPage() {
             {/* ========================================================
                 FAQ SINGKAT SEPUTAR KONSULTASI & KONTAK
             ======================================================== */}
-            <div className="mt-16 pt-12 border-t border-[#14234d]">
-              <div className="text-center max-w-2xl mx-auto mb-8">
+            <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-[#14234d]">
+              <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
                 <span className="text-[#e5b842] text-xs font-bold tracking-widest uppercase">
                   PERTANYAAN UMUM
                 </span>
@@ -527,8 +527,8 @@ export default function KontakKamiPage() {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-[#070f26] border border-[#1b2f69] rounded-xl p-5 space-y-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                <div className="bg-[#070f26] border border-[#1b2f69] rounded-xl p-4 sm:p-5 space-y-2">
                   <div className="flex items-center gap-2 text-sm font-bold text-white">
                     <HelpCircle className="w-4 h-4 text-[#e5b842] shrink-0" />
                     <h4>Apakah ada biaya konsultasi?</h4>
@@ -538,7 +538,7 @@ export default function KontakKamiPage() {
                   </p>
                 </div>
 
-                <div className="bg-[#070f26] border border-[#1b2f69] rounded-xl p-5 space-y-2">
+                <div className="bg-[#070f26] border border-[#1b2f69] rounded-xl p-4 sm:p-5 space-y-2">
                   <div className="flex items-center gap-2 text-sm font-bold text-white">
                     <FileCheck2 className="w-4 h-4 text-[#e5b842] shrink-0" />
                     <h4>Berapa lama proses penerbitan?</h4>
@@ -548,7 +548,7 @@ export default function KontakKamiPage() {
                   </p>
                 </div>
 
-                <div className="bg-[#070f26] border border-[#1b2f69] rounded-xl p-5 space-y-2">
+                <div className="bg-[#070f26] border border-[#1b2f69] rounded-xl p-4 sm:p-5 space-y-2">
                   <div className="flex items-center gap-2 text-sm font-bold text-white">
                     <Zap className="w-4 h-4 text-[#e5b842] shrink-0" />
                     <h4>Apakah bisa kirim berkas lewat WhatsApp?</h4>

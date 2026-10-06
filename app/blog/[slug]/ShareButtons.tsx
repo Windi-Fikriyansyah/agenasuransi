@@ -53,9 +53,9 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
       <span className="text-xs text-slate-400 mr-1 flex items-center gap-1">
-        <Share2 className="w-3.5 h-3.5 text-[#e5b842]" />
+        <Share2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
         Bagikan:
       </span>
 

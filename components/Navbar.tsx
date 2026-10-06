@@ -89,6 +89,23 @@ export default function Navbar() {
     }
   };
 
+  const handleLayananClick = (e: React.MouseEvent) => {
+    if (pathname === "/layanan-service" || pathname === "/layanan") {
+      e.preventDefault();
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    } else {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
   const handleKontakClick = (e: React.MouseEvent) => {
     if (pathname === "/kontak-kami" || pathname === "/kontak") {
       e.preventDefault();
@@ -151,8 +168,10 @@ export default function Navbar() {
               Syarat & Ketentuan
             </Link>
             <Link
-              href="/#jenis-surety-bond"
-              className="hover:text-[#b89328] transition-colors"
+              href="/layanan-service"
+              onClick={handleLayananClick}
+              className={`transition-colors hover:text-[#b89328] ${pathname === "/layanan-service" || pathname === "/layanan" ? "text-[#b89328] font-bold" : "hover:text-[#b89328]"
+                }`}
             >
               Layanan Service
             </Link>
@@ -176,7 +195,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="p-2 text-slate-600 hover:text-[#0b1536] hover:bg-slate-100 rounded-full transition-all cursor-pointer"
@@ -195,19 +214,21 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
-          <div className="flex md:hidden items-center gap-2">
+          {/* Mobile & Tablet Toggle (Search & Hamburger) */}
+          <div className="flex lg:hidden items-center gap-1.5 sm:gap-2">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 text-slate-700 hover:text-[#b89328] cursor-pointer"
-              aria-label="Search"
+              className="p-2 text-slate-700 hover:text-[#b89328] rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
+              aria-label="Cari informasi"
+              title="Cari"
             >
               <Search className="w-5 h-5" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-800 hover:text-[#b89328] cursor-pointer"
-              aria-label="Toggle Menu"
+              className="p-2 text-slate-800 hover:text-[#b89328] rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+              aria-label="Menu Navigasi"
+              title="Menu"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -246,7 +267,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl">
+        <div className="lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-3 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto animate-fadeIn">
           <Link
             href="/"
             onClick={(e) => {
@@ -281,9 +302,13 @@ export default function Navbar() {
             Syarat & Ketentuan
           </Link>
           <Link
-            href="/#jenis-surety-bond"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium hover:text-[#b89328] border-b border-slate-100"
+            href="/layanan-service"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              handleLayananClick(e);
+            }}
+            className={`block py-2 border-b border-slate-100 ${pathname === "/layanan-service" || pathname === "/layanan" ? "text-[#b89328] font-bold" : "text-slate-700 font-medium hover:text-[#b89328]"
+              }`}
           >
             Layanan Service
           </Link>

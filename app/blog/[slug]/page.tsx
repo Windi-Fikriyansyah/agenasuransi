@@ -8,13 +8,10 @@ import {
   User,
   ChevronRight,
   ArrowLeft,
-  Share2,
   CheckCircle2,
   MessageCircle,
   Phone,
-  BookOpen,
   Tag,
-  Building2,
   ShieldCheck,
 } from "lucide-react";
 import {
@@ -177,17 +174,17 @@ export default async function BlogDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="bg-[#060c1d] text-slate-100 min-h-screen">
+      <div className="bg-[#060c1d] text-slate-100 min-h-screen overflow-x-hidden">
         {/* ========================================================
             1. BREADCRUMB & METADATA BAR
         ======================================================== */}
         <nav
           aria-label="Breadcrumb"
-          className="border-b border-[#14234d] bg-[#070f26]/80 backdrop-blur-sm py-4 sticky top-20 z-20"
+          className="border-b border-[#14234d] bg-[#070f26]/80 backdrop-blur-sm py-3 sm:py-4 sticky top-16 sm:top-20 z-20"
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2 text-slate-300 overflow-hidden">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 overflow-hidden">
                 <Link
                   href="/"
                   className="hover:text-[#e5b842] transition-colors shrink-0"
@@ -202,7 +199,7 @@ export default async function BlogDetailPage({ params }: Props) {
                   Blog
                 </Link>
                 <span>/</span>
-                <span className="text-[#e5b842] font-semibold truncate">
+                <span className="text-[#e5b842] font-semibold truncate max-w-[140px] sm:max-w-none">
                   {article.category}
                 </span>
               </div>
@@ -221,12 +218,12 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* ========================================================
             2. ARTICLE BODY CONTENT
         ======================================================== */}
-        <article className="py-10 sm:py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <article className="py-8 sm:py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
             {/* Header Artikel */}
-            <header className="space-y-4 pb-6 border-b border-[#14234d]">
+            <header className="space-y-3 sm:space-y-4 pb-5 sm:pb-6 border-b border-[#14234d]">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="bg-[#0b1638] text-[#e5b842] text-xs font-bold px-3 py-1 rounded-full border border-[#e5b842]/40 uppercase tracking-wider">
+                <span className="bg-[#0b1638] text-[#e5b842] text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full border border-[#e5b842]/40 uppercase tracking-wider">
                   {article.category}
                 </span>
                 <span className="text-xs text-slate-400 flex items-center gap-1">
@@ -235,15 +232,15 @@ export default async function BlogDetailPage({ params }: Props) {
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight">
+              <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight">
                 {article.title}
               </h1>
 
               {/* Author & Publication Info */}
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300 pt-2">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-slate-300 pt-1 sm:pt-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#0b1638] border border-[#e5b842] flex items-center justify-center text-[#e5b842]">
-                    <User className="w-4 h-4" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0b1638] border border-[#e5b842] flex items-center justify-center text-[#e5b842] shrink-0">
+                    <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
                     <span className="font-bold text-white block">
@@ -268,23 +265,23 @@ export default async function BlogDetailPage({ params }: Props) {
             </header>
 
             {/* Ringkasan Eksekutif / Excerpt Box */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0b1638] border border-[#1b2f69] shadow-xl">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#0b1638] border border-[#1b2f69] shadow-xl">
               <h2 className="text-xs font-bold text-[#e5b842] uppercase tracking-wider mb-2">
                 Ringkasan Artikel:
               </h2>
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed italic">
+              <p className="text-slate-200 text-xs sm:text-base leading-relaxed italic">
                 &ldquo;{article.summary}&rdquo;
               </p>
             </div>
 
             {/* Poin-Poin Kunci (Key Takeaways) */}
             {article.keyTakeaways && article.keyTakeaways.length > 0 && (
-              <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0a183f] to-[#050b1a] border border-[#e5b842]/40 shadow-xl space-y-3">
+              <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-[#0a183f] to-[#050b1a] border border-[#e5b842]/40 shadow-xl space-y-3">
                 <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base">
-                  <ShieldCheck className="w-5 h-5 text-[#e5b842]" />
+                  <ShieldCheck className="w-5 h-5 text-[#e5b842] shrink-0" />
                   <span>Poin Penting yang Perlu Diperhatikan:</span>
                 </div>
-                <ul className="space-y-2.5 pt-1">
+                <ul className="space-y-2 sm:space-y-2.5 pt-1">
                   {article.keyTakeaways.map((point, index) => (
                     <li
                       key={index}
@@ -299,7 +296,7 @@ export default async function BlogDetailPage({ params }: Props) {
             )}
 
             {/* Konten Paragraf Lengkap */}
-            <section className="space-y-6 text-slate-200 text-sm sm:text-base leading-relaxed text-justify sm:text-left">
+            <section className="space-y-5 sm:space-y-6 text-slate-200 text-sm sm:text-base leading-relaxed text-justify sm:text-left">
               {article.content.map((paragraph, index) => (
                 <p key={index} className="leading-relaxed">
                   {paragraph}
@@ -308,17 +305,17 @@ export default async function BlogDetailPage({ params }: Props) {
             </section>
 
             {/* Tags & Social Sharing Bar */}
-            <div className="pt-6 border-t border-[#14234d] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="pt-5 sm:pt-6 border-t border-[#14234d] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               {/* Tags */}
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-xs text-slate-400 mr-1 flex items-center gap-1">
-                  <Tag className="w-3.5 h-3.5 text-[#e5b842]" />
+                  <Tag className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                   Topik:
                 </span>
                 {article.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs bg-[#0b1638] text-slate-200 px-3 py-1 rounded-full border border-[#1b2f69]"
+                    className="text-xs bg-[#0b1638] text-slate-200 px-2.5 sm:px-3 py-1 rounded-full border border-[#1b2f69]"
                   >
                     #{tag}
                   </span>
@@ -330,7 +327,7 @@ export default async function BlogDetailPage({ params }: Props) {
             </div>
 
             {/* Call to Action Box Dalam Artikel */}
-            <div className="mt-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0b1638] via-[#091433] to-[#070f26] border border-[#e5b842]/50 shadow-2xl relative overflow-hidden">
+            <div className="mt-8 sm:mt-10 p-5 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0b1638] via-[#091433] to-[#070f26] border border-[#e5b842]/50 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#e5b842]/10 rounded-bl-full pointer-events-none blur-2xl" />
 
               <div className="relative z-10 space-y-3">
@@ -344,21 +341,21 @@ export default async function BlogDetailPage({ params }: Props) {
                   Hubungi tim konsultan PT Niaga Jaminan Nusantara sekarang. Kami siap membantu review dokumen tender Anda secara gratis dan memproses warkat penjaminan tanpa agunan cepat dalam 1-3 hari kerja.
                 </p>
 
-                <div className="pt-3 flex flex-wrap gap-3">
+                <div className="pt-2 sm:pt-3 flex flex-col sm:flex-row gap-2.5 sm:gap-3">
                   <a
                     href={whatsappConsultationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer shadow-lg hover:scale-105 transition-all"
+                    className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 sm:py-3 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer shadow-lg hover:scale-105 active:scale-95 transition-all text-center"
                   >
-                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <MessageCircle className="w-4 h-4 fill-current shrink-0" />
                     <span>Konsultasi via WhatsApp</span>
                   </a>
                   <a
-                    href="tel:081140665585"
-                    className="border border-[#1f3775] hover:border-[#e5b842] text-slate-200 font-semibold text-xs sm:text-sm px-5 py-3 rounded-lg inline-flex items-center gap-2 transition-all hover:bg-[#0b1638]"
+                    href="tel:082113189343"
+                    className="w-full sm:w-auto justify-center border border-[#1f3775] hover:border-[#e5b842] text-slate-200 font-semibold text-xs sm:text-sm px-5 py-3.5 sm:py-3 rounded-lg inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] active:scale-95 text-center"
                   >
-                    <Phone className="w-4 h-4 text-[#e5b842]" />
+                    <Phone className="w-4 h-4 text-[#e5b842] shrink-0" />
                     <span>Telepon Konsultan</span>
                   </a>
                 </div>
@@ -369,7 +366,7 @@ export default async function BlogDetailPage({ params }: Props) {
                 3. ARTIKEL TERKAIT (INTERNAL LINKING FOR SEO)
             ======================================================== */}
             {relatedArticles.length > 0 && (
-              <section className="pt-12 border-t border-[#14234d] space-y-6">
+              <section className="pt-10 sm:pt-12 border-t border-[#14234d] space-y-5 sm:space-y-6">
                 <div>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-white">
                     Artikel Terkait Lainnya
@@ -379,14 +376,14 @@ export default async function BlogDetailPage({ params }: Props) {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
                   {relatedArticles.map((rel) => (
                     <Link
                       key={rel.id}
                       href={`/blog/${rel.slug}`}
-                      className="bg-[#0b1638] rounded-xl p-5 border border-[#1b2f69] hover:border-[#e5b842]/70 transition-all shadow-lg flex flex-col justify-between group hover:-translate-y-1"
+                      className="bg-[#0b1638] rounded-xl p-4 sm:p-5 border border-[#1b2f69] hover:border-[#e5b842]/70 transition-all shadow-lg flex flex-col justify-between group hover:-translate-y-1"
                     >
-                      <div className="space-y-2.5">
+                      <div className="space-y-2 sm:space-y-2.5">
                         <span className="text-[10px] bg-[#070f26] text-[#e5b842] px-2.5 py-0.5 rounded-full border border-[#e5b842]/30 uppercase font-bold">
                           {rel.category}
                         </span>
@@ -411,10 +408,10 @@ export default async function BlogDetailPage({ params }: Props) {
             )}
 
             {/* Back Button */}
-            <div className="pt-4 text-center">
+            <div className="pt-2 sm:pt-4 text-center">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-300 hover:text-[#e5b842] transition-colors"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-300 hover:text-[#e5b842] transition-colors py-2"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Kembali ke Semua Artikel Blog</span>

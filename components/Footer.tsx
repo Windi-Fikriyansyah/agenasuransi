@@ -5,11 +5,11 @@ import { MapPin, Phone, Send, Clock, CheckCircle2 } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="kontak" className="bg-[#040816] pt-16 pb-12 border-t border-[#14234d] text-slate-300">
+    <footer id="kontak" className="bg-[#040816] pt-12 sm:pt-16 pb-10 sm:pb-12 border-t border-[#14234d] text-slate-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
           {/* Left Column */}
-          <div className="lg:col-span-7 space-y-5">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5">
             {/* Logo Brand */}
             <div className="flex flex-col gap-3">
               <div className="relative">
@@ -19,7 +19,7 @@ export default function Footer() {
                     alt="PT NIAGA JAMINAN NUSANTARA"
                     width={450}
                     height={130}
-                    className="h-24 sm:h-28 md:h-32 w-auto object-contain object-left cursor-pointer"
+                    className="h-16 sm:h-24 md:h-28 lg:h-32 max-w-full w-auto object-contain object-left cursor-pointer"
                   />
                 </Link>
               </div>
@@ -39,25 +39,25 @@ export default function Footer() {
             </p>
 
             {/* Direct Contacts */}
-            <div className="pt-2 flex flex-wrap gap-4 text-xs">
+            <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2.5 sm:gap-4 text-xs">
               <a
                 href="tel:081140665585"
                 className="flex items-center gap-1.5 text-slate-200 hover:text-[#e5b842] transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-[#e5b842]" />
+                <Phone className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                 <span>0811-4066-5585</span>
               </a>
-              <span className="text-slate-600">|</span>
+              <span className="hidden sm:inline text-slate-600">|</span>
               <a
                 href="mailto:info@anugrahluasjaya.co.id"
-                className="flex items-center gap-1.5 text-slate-200 hover:text-[#e5b842] transition-colors"
+                className="flex items-center gap-1.5 text-slate-200 hover:text-[#e5b842] transition-colors break-all sm:break-normal"
               >
-                <Send className="w-3.5 h-3.5 text-[#e5b842]" />
+                <Send className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                 <span>info@anugrahluasjaya.co.id</span>
               </a>
-              <span className="text-slate-600">|</span>
+              <span className="hidden sm:inline text-slate-600">|</span>
               <span className="flex items-center gap-1.5 text-slate-400">
-                <Clock className="w-3.5 h-3.5 text-[#e5b842]" />
+                <Clock className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                 <span>Senin - Sabtu: 08.00 - 18.00 WIB</span>
               </span>
             </div>
@@ -69,9 +69,9 @@ export default function Footer() {
           </div>
 
           {/* Right Column: Flyer & Location Coverage */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-6 pt-4 lg:pt-0">
             {/* Flyer Thumbnail Card */}
-            <div className="relative rounded-lg overflow-hidden border border-[#1a2e63] shadow-lg bg-[#091228] w-48 sm:w-56">
+            <div className="relative rounded-lg overflow-hidden border border-[#1a2e63] shadow-lg bg-[#091228] w-44 sm:w-56">
               <Image
                 src="/images/njn.png"
                 alt="Bank Garansi & Asuransi"
@@ -87,21 +87,21 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-[#e5b842] shrink-0" />
                 <span>Melayani Lokasi Terdekat Anda:</span>
               </div>
-              <div className="space-y-1 pl-6 text-xs text-slate-300">
+              <div className="space-y-1.5 pl-2 sm:pl-6 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                   <span>DKI Jakarta &amp; Jabodetabek (Bogor, Depok, Tangerang, Bekasi)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                   <span>Jawa Barat, Jawa Tengah, DI Yogyakarta, Jawa Timur</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                   <span>Sumatera, Kalimantan, Sulawesi, Bali, Nusa Tenggara, Papua</span>
                 </div>
                 <div className="flex items-center gap-2 font-semibold text-[#f5c542] pt-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
                   <span>Siap melayani seluruh wilayah Indonesia</span>
                 </div>
               </div>
