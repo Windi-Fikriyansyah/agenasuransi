@@ -88,7 +88,7 @@ export const settingsDefaults = {
     submitLabel: "Kirim & Hubungkan ke WhatsApp",
   },
   seo: {
-    siteUrl: "https://niagajaminannusantara.co.id",
+    siteUrl: "https://niagajaminan.com",
     title: "PT Niaga Jaminan Nusantara - Jasa Bank Garansi & Surety Bond Terpercaya",
     description:
       "Layanan penerbitan Bank Garansi dan Surety Bond cepat tanpa agunan (Non Collateral) dan dengan agunan (Collateral) untuk berbagai proyek di seluruh Indonesia. Resmi, legal, dan terdaftar OJK.",
@@ -105,6 +105,7 @@ export const settingsDefaults = {
       "Jaminan Tender",
     ],
     ogImage: "/images/banner-jaminan.jpg",
+    googleSiteVerification: "",
   },
 };
 
@@ -196,10 +197,15 @@ export const settingsSchema: PageSchema = {
     },
     {
       key: "seo",
-      title: "SEO Global",
-      description: "Nilai default SEO dan domain utama website.",
+      title: "SEO Global & Google Search Console",
+      description: "Nilai default SEO, domain utama website, dan verifikasi Google Search Console.",
       fields: [
-        url("siteUrl", "URL Website Utama", "Contoh: https://niagajaminannusantara.co.id"),
+        url("siteUrl", "URL Website Utama", "Contoh: https://niagajaminannusantara.co.id (Gunakan domain produksi Anda)"),
+        text(
+          "googleSiteVerification",
+          "Kode Verifikasi Google Search Console",
+          "Salin kode dari HTML tag Google Search Console (contoh: aB1cD2eF3gH4...) atau tempel seluruh tag <meta name='google-site-verification' content='...' />."
+        ),
         text("title", "Meta Title Default"),
         textarea("description", "Meta Description Default"),
         strings("keywords", "Keywords", { itemLabel: "Keyword" }),
