@@ -4,7 +4,10 @@ import { settingsDefaults, type SettingsContent } from "@/lib/content/pages/sett
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const settings = await getPageContent<SettingsContent>("settings");
-  const rawSiteUrl = settings?.seo?.siteUrl || settingsDefaults.seo.siteUrl;
+  let rawSiteUrl = settings?.seo?.siteUrl || settingsDefaults.seo.siteUrl || "https://www.niagajaminan.com";
+  if (rawSiteUrl.includes("niagajaminannusantara.co.id")) {
+    rawSiteUrl = "https://www.niagajaminan.com";
+  }
   const siteUrl = rawSiteUrl.startsWith("http")
     ? rawSiteUrl.replace(/\/+$/, "")
     : `https://${rawSiteUrl.replace(/\/+$/, "")}`;

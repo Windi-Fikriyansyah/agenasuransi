@@ -16,7 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const company = settings?.company || settingsDefaults.company;
   const branding = settings?.branding || settingsDefaults.branding;
 
-  const rawSiteUrl = seo.siteUrl || "https://niagajaminan.com";
+  let rawSiteUrl = seo.siteUrl || "https://www.niagajaminan.com";
+  if (rawSiteUrl.includes("niagajaminannusantara.co.id")) {
+    rawSiteUrl = "https://www.niagajaminan.com";
+  }
   const siteUrl = rawSiteUrl.startsWith("http")
     ? rawSiteUrl.replace(/\/+$/, "")
     : `https://${rawSiteUrl.replace(/\/+$/, "")}`;
