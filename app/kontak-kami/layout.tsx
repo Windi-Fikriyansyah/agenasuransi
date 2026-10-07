@@ -1,32 +1,42 @@
 import type { Metadata } from "next";
+import { getPageContent } from "@/lib/content/db";
+import type { KontakContent } from "@/lib/content/pages/kontak";
 
-export const metadata: Metadata = {
-  title: "Kontak Kami - Konsultasi Bank Garansi & Surety Bond | PT Niaga Jaminan Nusantara",
-  description:
-    "Hubungi PT Niaga Jaminan Nusantara untuk konsultasi gratis penerbitan Bank Garansi & Surety Bond tanpa agunan (non-collateral). Kantor di Graha Surveyor Indonesia Lt. 15, Jakarta Selatan. WhatsApp: 0821-1318-9343.",
-  keywords: [
-    "Kontak Bank Garansi",
-    "Konsultasi Surety Bond",
-    "PT Niaga Jaminan Nusantara",
-    "Kantor PT Niaga Jaminan Nusantara",
-    "Alamat Graha Surveyor Indonesia",
-    "WhatsApp Bank Garansi",
-    "Agen Asuransi Tender Proyek",
-    "Jasa Bank Garansi Jakarta",
-  ],
-  alternates: {
-    canonical: "https://niagajaminannusantara.co.id/kontak-kami",
-  },
-  openGraph: {
-    title: "Kontak Kami - Konsultasi Bank Garansi & Surety Bond | PT Niaga Jaminan Nusantara",
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getPageContent<KontakContent>("kontak");
+  const seo = content?.seo;
+  return {
+    title:
+      seo?.title ||
+      "Kontak Kami - Konsultasi Bank Garansi & Surety Bond | PT Niaga Jaminan Nusantara",
     description:
-      "Hubungi konsultan resmi kami untuk penerbitan Bank Garansi & Surety Bond cepat tanpa agunan di seluruh Indonesia. Respon cepat via WhatsApp 0821-1318-9343.",
-    url: "https://niagajaminannusantara.co.id/kontak-kami",
-    siteName: "PT Niaga Jaminan Nusantara",
-    locale: "id_ID",
-    type: "website",
-  },
-};
+      seo?.description ||
+      "Hubungi PT Niaga Jaminan Nusantara untuk konsultasi gratis penerbitan Bank Garansi & Surety Bond tanpa agunan (non-collateral).",
+    keywords: seo?.keywords || [
+      "Kontak Bank Garansi",
+      "Konsultasi Surety Bond",
+      "PT Niaga Jaminan Nusantara",
+      "Kantor PT Niaga Jaminan Nusantara",
+      "Alamat Graha Surveyor Indonesia",
+      "WhatsApp Bank Garansi",
+    ],
+    alternates: {
+      canonical: "https://niagajaminannusantara.co.id/kontak-kami",
+    },
+    openGraph: {
+      title:
+        seo?.title ||
+        "Kontak Kami - Konsultasi Bank Garansi & Surety Bond | PT Niaga Jaminan Nusantara",
+      description:
+        seo?.description ||
+        "Hubungi konsultan resmi kami untuk penerbitan Bank Garansi & Surety Bond cepat tanpa agunan di seluruh Indonesia.",
+      url: "https://niagajaminannusantara.co.id/kontak-kami",
+      siteName: "PT Niaga Jaminan Nusantara",
+      locale: "id_ID",
+      type: "website",
+    },
+  };
+}
 
 export default function KontakLayout({
   children,

@@ -2,8 +2,18 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Send, Clock, CheckCircle2 } from "lucide-react";
+import { settingsDefaults, type SettingsContent } from "@/lib/content/pages/settings";
 
-export default function Footer() {
+interface FooterProps {
+  settings?: SettingsContent;
+}
+
+export default function Footer({ settings = settingsDefaults }: FooterProps) {
+  const company = settings.company || settingsDefaults.company;
+  const contact = settings.contact || settingsDefaults.contact;
+  const branding = settings.branding || settingsDefaults.branding;
+  const footer = settings.footer || settingsDefaults.footer;
+
   return (
     <footer id="kontak" className="bg-[#040816] pt-12 sm:pt-16 pb-10 sm:pb-12 border-t border-[#14234d] text-slate-300 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,8 +25,8 @@ export default function Footer() {
               <div className="relative">
                 <Link href="/">
                   <Image
-                    src="/images/logo-footer.png"
-                    alt="PT NIAGA JAMINAN NUSANTARA"
+                    src={branding.logoFooter || "/images/logo-footer.png"}
+                    alt={company.name}
                     width={450}
                     height={130}
                     className="h-16 sm:h-24 md:h-28 lg:h-32 max-w-full w-auto object-contain object-left cursor-pointer"
@@ -29,81 +39,79 @@ export default function Footer() {
             <div className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
               <MapPin className="w-4 h-4 text-[#e5b842] shrink-0 mt-0.5" />
               <p className="leading-relaxed">
-                <strong className="text-white">Alamat:</strong> Gedung Graha Surveyor Indonesia Lantai 15, Jl. Gatot Subroto Kav. 56, Kuningan Barat, Mampang Prapatan, Jakarta Selatan, DKI Jakarta 12950
+                <strong className="text-white">{footer.addressLabel || "Alamat:"}</strong> {contact.address}
               </p>
             </div>
 
             {/* Description */}
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed text-justify sm:text-left">
-              Sebagai agen dan konsultan resmi Surety Bond dan Bank Garansi, kami bermitra dengan puluhan perusahaan asuransi terkemuka dan bank BUMN/swasta ternama untuk menjamin legalitas serta keamanan penjaminan proyek Anda. Berpengalaman menangani ribuan proyek konstruksi, pengadaan, dan manufaktur berskala nasional.
+              {footer.description}
             </p>
 
             {/* Direct Contacts */}
             <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-2.5 sm:gap-4 text-xs">
               <a
-                href="tel:081140665585"
+                href={`tel:${contact.phoneNumber}`}
                 className="flex items-center gap-1.5 text-slate-200 hover:text-[#e5b842] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                <span>0811-4066-5585</span>
+                <span>{contact.phoneDisplay}</span>
               </a>
               <span className="hidden sm:inline text-slate-600">|</span>
               <a
-                href="mailto:info@anugrahluasjaya.co.id"
+                href={`mailto:${contact.email}`}
                 className="flex items-center gap-1.5 text-slate-200 hover:text-[#e5b842] transition-colors break-all sm:break-normal"
               >
                 <Send className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                <span>info@anugrahluasjaya.co.id</span>
+                <span>{contact.email}</span>
               </a>
               <span className="hidden sm:inline text-slate-600">|</span>
               <span className="flex items-center gap-1.5 text-slate-400">
                 <Clock className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                <span>Senin - Sabtu: 08.00 - 18.00 WIB</span>
+                <span>{contact.hours}</span>
               </span>
             </div>
 
             {/* Copyright */}
             <div className="pt-4 text-xs text-slate-500 border-t border-[#14234d]">
-              &copy; {new Date().getFullYear()} PT Niaga Jaminan Nusantara. All rights reserved.
+              &copy; {new Date().getFullYear()} {footer.copyright}
             </div>
           </div>
 
           {/* Right Column: Flyer & Location Coverage */}
           <div className="lg:col-span-5 space-y-6 pt-4 lg:pt-0">
             {/* Flyer Thumbnail Card */}
-            <div className="relative rounded-lg overflow-hidden border border-[#1a2e63] shadow-lg bg-[#091228] w-44 sm:w-56">
-              <Image
-                src="/images/njn.png"
-                alt="Bank Garansi & Asuransi"
-                width={224}
-                height={126}
-                className="w-full h-auto object-contain"
-              />
-            </div>
+            {footer.flyerImage && (
+              <div className="relative rounded-lg overflow-hidden border border-[#1a2e63] shadow-lg bg-[#091228] w-44 sm:w-56">
+                <Image
+                  src={footer.flyerImage}
+                  alt="Bank Garansi & Asuransi"
+                  width={224}
+                  height={126}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            )}
 
             {/* Service Areas */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-white font-bold text-sm">
                 <MapPin className="w-4 h-4 text-[#e5b842] shrink-0" />
-                <span>Melayani Lokasi Terdekat Anda:</span>
+                <span>{footer.areasTitle || "Melayani Lokasi Terdekat Anda:"}</span>
               </div>
               <div className="space-y-1.5 pl-2 sm:pl-6 text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                  <span>DKI Jakarta &amp; Jabodetabek (Bogor, Depok, Tangerang, Bekasi)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                  <span>Jawa Barat, Jawa Tengah, DI Yogyakarta, Jawa Timur</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                  <span>Sumatera, Kalimantan, Sulawesi, Bali, Nusa Tenggara, Papua</span>
-                </div>
-                <div className="flex items-center gap-2 font-semibold text-[#f5c542] pt-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
-                  <span>Siap melayani seluruh wilayah Indonesia</span>
-                </div>
+                {(footer.areas || []).map((area, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
+                    <span>{area}</span>
+                  </div>
+                ))}
+                {footer.areasHighlight && (
+                  <div className="flex items-center gap-2 font-semibold text-[#f5c542] pt-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
+                    <span>{footer.areasHighlight}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

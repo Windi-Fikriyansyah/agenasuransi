@@ -2,11 +2,22 @@
 
 import React from "react";
 import { MessageCircle } from "lucide-react";
+import { settingsDefaults, type SettingsContent } from "@/lib/content/pages/settings";
 
-export default function FloatingWhatsApp() {
+interface FloatingWhatsAppProps {
+  settings?: SettingsContent;
+}
+
+export default function FloatingWhatsApp({
+  settings = settingsDefaults,
+}: FloatingWhatsAppProps) {
+  const contact = settings.contact || settingsDefaults.contact;
+  const floating = settings.floatingWhatsapp || settingsDefaults.floatingWhatsapp;
+
   const openWhatsAppDirect = () => {
+    const text = encodeURIComponent(contact.whatsappDefaultMessage);
     window.open(
-      "https://wa.me/6282113189343?text=Halo%20PT%20Niaga%20Jaminan%20Nusantara,%20saya%20ingin%20konsultasi%20layanan%20Bank%20Garansi%20dan%20Surety%20Bond",
+      `https://wa.me/${contact.whatsappNumber}?text=${text}`,
       "_blank"
     );
   };
@@ -15,7 +26,7 @@ export default function FloatingWhatsApp() {
     <aside aria-label="Kontak Cepat WhatsApp" className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
       {/* Helper tooltip */}
       <div className="hidden sm:flex items-center bg-zinc-900/90 text-white border border-zinc-700 text-xs px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm animate-pulse">
-        <span>Konsultasi Cepat Online</span>
+        <span>{floating.tooltip || "Konsultasi Cepat Online"}</span>
       </div>
 
       {/* Pulsing button */}

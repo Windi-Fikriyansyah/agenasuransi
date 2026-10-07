@@ -14,11 +14,9 @@ import {
   Tag,
   ShieldCheck,
 } from "lucide-react";
-import {
-  ARTICLES,
-  getArticleBySlug,
-  getRelatedArticles,
-} from "@/data/articles";
+import { getArticleBySlug, getArticles, getPageContent } from "@/lib/content/db";
+import type { SettingsContent } from "@/lib/content/pages/settings";
+import type { Article } from "@/data/articles";
 import ShareButtons from "./ShareButtons";
 
 interface Props {
@@ -26,14 +24,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return ARTICLES.map((article) => ({
+  const articles = await getArticles();
+  return articles.map((article) => ({
     slug: article.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return {
@@ -89,15 +88,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function getRelated(
+  allArticles: Article[],
+  currentSlug: string,
+  category: string,
+  limit = 3
+): Article[] {
+  const same = allArticles.filter(
+    (a) => a.slug !== currentSlug && a.category === category
+  );
+  if (same.length >= limit) return same.slice(0, limit);
+  const others = allArticles.filter(
+    (a) => a.slug !== currentSlug && a.category !== category
+  );
+  return [...same, ...others].slice(0, limit);
+}
+
 export default async function BlogDetailPage({ params }: Props) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const [article, allArticles, settings] = await Promise.all([
+    getArticleBySlug(slug),
+    getArticles(),
+    getPageContent<SettingsContent>("settings"),
+  ]);
 
   if (!article) {
     notFound();
   }
 
-  const relatedArticles = getRelatedArticles(article.slug, article.category, 3);
+  const relatedArticles = getRelated(allArticles, article.slug, article.category, 3);
+  const contact = settings?.contact;
+  const whatsappNumber = contact?.whatsappNumber || "6282113189343";
+  const phoneNumber = contact?.phoneNumber || "082113189343";
 
   // Schema.org JSON-LD structured data for Google SEO
   const jsonLd = {
@@ -162,7 +184,7 @@ export default async function BlogDetailPage({ params }: Props) {
     ],
   };
 
-  const whatsappConsultationUrl = `https://wa.me/6282113189343?text=${encodeURIComponent(
+  const whatsappConsultationUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     `Halo PT Niaga Jaminan Nusantara, saya membaca artikel "${article.title}" dan ingin konsultasi mengenai penerbitan jaminan proyek.`
   )}`;
 
@@ -264,7 +286,7 @@ export default async function BlogDetailPage({ params }: Props) {
               </div>
             </header>
 
-            {/* Ringkasan Eksekutif / Excerpt Box */}
+            {/* Ringkasan Eksekutif */}
             <div className="p-4 sm:p-6 rounded-2xl bg-[#0b1638] border border-[#1b2f69] shadow-xl">
               <h2 className="text-xs font-bold text-[#e5b842] uppercase tracking-wider mb-2">
                 Ringkasan Artikel:
@@ -274,7 +296,7 @@ export default async function BlogDetailPage({ params }: Props) {
               </p>
             </div>
 
-            {/* Poin-Poin Kunci (Key Takeaways) */}
+            {/* Poin-Poin Kunci */}
             {article.keyTakeaways && article.keyTakeaways.length > 0 && (
               <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-[#0a183f] to-[#050b1a] border border-[#e5b842]/40 shadow-xl space-y-3">
                 <div className="flex items-center gap-2 text-white font-bold text-sm sm:text-base">
@@ -306,7 +328,6 @@ export default async function BlogDetailPage({ params }: Props) {
 
             {/* Tags & Social Sharing Bar */}
             <div className="pt-5 sm:pt-6 border-t border-[#14234d] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              {/* Tags */}
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-xs text-slate-400 mr-1 flex items-center gap-1">
                   <Tag className="w-3.5 h-3.5 text-[#e5b842] shrink-0" />
@@ -322,7 +343,6 @@ export default async function BlogDetailPage({ params }: Props) {
                 ))}
               </div>
 
-              {/* Share Buttons (Interactive Client Component) */}
               <ShareButtons title={article.title} slug={article.slug} />
             </div>
 
@@ -352,7 +372,7 @@ export default async function BlogDetailPage({ params }: Props) {
                     <span>Konsultasi via WhatsApp</span>
                   </a>
                   <a
-                    href="tel:082113189343"
+                    href={`tel:${phoneNumber}`}
                     className="w-full sm:w-auto justify-center border border-[#1f3775] hover:border-[#e5b842] text-slate-200 font-semibold text-xs sm:text-sm px-5 py-3.5 sm:py-3 rounded-lg inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] active:scale-95 text-center"
                   >
                     <Phone className="w-4 h-4 text-[#e5b842] shrink-0" />
@@ -362,9 +382,7 @@ export default async function BlogDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* ========================================================
-                3. ARTIKEL TERKAIT (INTERNAL LINKING FOR SEO)
-            ======================================================== */}
+            {/* ARTIKEL TERKAIT */}
             {relatedArticles.length > 0 && (
               <section className="pt-10 sm:pt-12 border-t border-[#14234d] space-y-5 sm:space-y-6">
                 <div>
