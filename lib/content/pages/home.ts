@@ -18,7 +18,6 @@ export const homeDefaults = {
     description:
       "Layanan Penerbitan Bank Garansi dan Surety Bond cepat tanpa agunan (Non Collateral) dan dengan agunan (Collateral) untuk berbagai keperluan proyek pemerintah maupun swasta di seluruh wilayah Indonesia. Proses mudah, syarat ringan, legalitas resmi, dan terdaftar di OJK.",
     ctaConsultationText: "KONSULTASI SEKARANG",
-    ctaWhatsappText: "Chat WhatsApp",
     badgeItems: ["Tanpa Agunan", "Resmi OJK", "Proses Cepat", "Se-Indonesia"],
     medallionImage: "/images/gold-seal.jpg",
   },
@@ -296,8 +295,7 @@ export const homeSchema: PageSchema = {
         text("tagline", "Tagline / Badge Atas"),
         text("title", "Judul Utama (H1)"),
         textarea("description", "Deskripsi Hero"),
-        text("ctaConsultationText", "Teks Tombol Konsultasi"),
-        text("ctaWhatsappText", "Teks Tombol WhatsApp"),
+        text("ctaConsultationText", "Teks Tombol Konsultasi (Langsung ke WhatsApp)"),
         strings("badgeItems", "Poin Cepat (Bawah Tombol)", { itemLabel: "Poin" }),
         image("medallionImage", "Gambar Medallion / Seal"),
       ],

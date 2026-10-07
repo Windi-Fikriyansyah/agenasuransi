@@ -24,6 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: company.name }],
     icons: {
       icon: branding.favicon || "/images/logo.png",
+      shortcut: branding.favicon || "/images/logo.png",
+      apple: branding.favicon || "/images/logo.png",
     },
     openGraph: {
       title: seo.title,

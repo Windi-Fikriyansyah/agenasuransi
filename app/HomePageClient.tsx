@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   Phone,
 } from "lucide-react";
-import { useModal } from "@/components/ModalContext";
 import { Icon } from "@/components/site/Icon";
 import { RichText } from "@/components/site/RichText";
 import { homeDefaults, type HomeContent } from "@/lib/content/pages/home";
@@ -23,7 +22,6 @@ export default function HomePageClient({
   content = homeDefaults,
   settings = settingsDefaults,
 }: HomePageClientProps) {
-  const { openModal } = useModal();
 
   const hero = content.hero || homeDefaults.hero;
   const whatIs = content.whatIs || homeDefaults.whatIs;
@@ -74,21 +72,14 @@ export default function HomePageClient({
                 {hero.description}
               </p>
 
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-                <button
-                  onClick={openModal}
-                  className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-md inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-lg"
-                >
-                  <span>{hero.ctaConsultationText || "KONSULTASI SEKARANG"}</span>
-                  <ChevronRight className="w-4 h-4 stroke-[3]" />
-                </button>
-
+              <div className="pt-2 flex items-center w-full sm:w-auto">
                 <button
                   onClick={openWhatsAppDirect}
-                  className="w-full sm:w-auto justify-center border border-[#1f3775] hover:border-[#e5b842] text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-md inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] cursor-pointer"
+                  className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 sm:py-4 rounded-xl inline-flex items-center gap-2.5 gold-glow-btn cursor-pointer transition-all shadow-xl hover:scale-105 active:scale-95"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#e5b842]" />
-                  <span>{hero.ctaWhatsappText || "Chat WhatsApp"}</span>
+                  <MessageCircle className="w-4 h-4 fill-[#070f26] shrink-0" />
+                  <span>{hero.ctaConsultationText || "KONSULTASI SEKARANG"}</span>
+                  <ChevronRight className="w-4 h-4 stroke-[3]" />
                 </button>
               </div>
 
@@ -256,7 +247,7 @@ export default function HomePageClient({
 
                 <div>
                   <button
-                    onClick={openModal}
+                    onClick={openWhatsAppDirect}
                     className="w-full sm:w-auto justify-center bg-[#070f26] hover:bg-[#0b1638] text-[#f5c542] hover:text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-5 py-3 rounded-lg inline-flex items-center gap-2 transition-all cursor-pointer shadow-md hover:shadow-xl"
                   >
                     <span>{whyNeeded.ctaButtonText || "KONSULTASI GRATIS"}</span>
@@ -541,7 +532,7 @@ export default function HomePageClient({
 
           <div className="pt-4">
             <button
-              onClick={openModal}
+              onClick={openWhatsAppDirect}
               className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-xl hover:scale-105"
             >
               <span>{ctaBottom.buttonText || "KONSULTASI GRATIS SEKARANG"}</span>

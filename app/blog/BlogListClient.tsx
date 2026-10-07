@@ -12,7 +12,6 @@ import {
   BookOpen,
   ArrowRight,
 } from "lucide-react";
-import { useModal } from "@/components/ModalContext";
 import type { Article } from "@/data/articles";
 import {
   blogIndexDefaults,
@@ -36,7 +35,6 @@ export default function BlogListClient({
 }: BlogListClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
-  const { openModal } = useModal();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -254,7 +252,7 @@ export default function BlogListClient({
               <span>{cta.whatsappButtonText}</span>
             </button>
             <button
-              onClick={openModal}
+              onClick={() => openWhatsAppConsultation()}
               className="w-full sm:w-auto justify-center border border-[#1f3775] hover:border-[#e5b842] text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] cursor-pointer active:scale-95 text-center"
             >
               <Phone className="w-4 h-4 text-[#e5b842] shrink-0" />

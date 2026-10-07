@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X } from "lucide-react";
-import { useModal } from "./ModalContext";
 import { settingsDefaults, type SettingsContent } from "@/lib/content/pages/settings";
 
 interface NavbarProps {
@@ -15,7 +14,6 @@ interface NavbarProps {
 export default function Navbar({ settings = settingsDefaults }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { openModal } = useModal();
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     if (pathname === href) {
@@ -33,6 +31,16 @@ export default function Navbar({ settings = settingsDefaults }: NavbarProps) {
   const companyName = settings.company?.name || settingsDefaults.company.name;
   const ctaLabel = settings.navbar?.ctaLabel || settingsDefaults.navbar.ctaLabel;
   const mobileCtaLabel = settings.navbar?.mobileCtaLabel || settingsDefaults.navbar.mobileCtaLabel;
+  const contact = settings.contact || settingsDefaults.contact;
+
+  const openWhatsApp = () => {
+    const phone = contact.whatsappNumber || "6282113189343";
+    const msg = encodeURIComponent(
+      contact.whatsappDefaultMessage ||
+        "Halo PT Niaga Jaminan Nusantara, saya ingin konsultasi layanan Bank Garansi dan Surety Bond"
+    );
+    window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-white text-slate-800 shadow-md transition-all border-b border-slate-100">
@@ -82,7 +90,7 @@ export default function Navbar({ settings = settingsDefaults }: NavbarProps) {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-4">
             <button
-              onClick={openModal}
+              onClick={openWhatsApp}
               className="bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs uppercase tracking-wider px-4 py-2.5 rounded-md transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
             >
               <Phone className="w-3.5 h-3.5" />
@@ -140,7 +148,7 @@ export default function Navbar({ settings = settingsDefaults }: NavbarProps) {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                openModal();
+                openWhatsApp();
               }}
               className="w-full bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] text-[#070f26] font-extrabold py-3 rounded-md text-sm uppercase tracking-wider text-center cursor-pointer shadow-md"
             >

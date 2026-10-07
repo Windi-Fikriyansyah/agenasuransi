@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { ChevronRight, MessageCircle, CheckCircle2 } from "lucide-react";
-import { useModal } from "@/components/ModalContext";
 import { Icon } from "@/components/site/Icon";
 import { RichText } from "@/components/site/RichText";
 import {
@@ -24,7 +23,6 @@ export default function TentangKamiClient({
   content = tentangKamiDefaults,
   settings = settingsDefaults,
 }: TentangKamiClientProps) {
-  const { openModal } = useModal();
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
@@ -208,7 +206,7 @@ export default function TentangKamiClient({
           </p>
           <div className="pt-3 flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
             <button
-              onClick={openModal}
+              onClick={openWhatsApp}
               className="w-full sm:w-auto justify-center bg-gradient-to-r from-[#d4af37] via-[#f5c542] to-[#d4af37] hover:from-[#c59e2a] hover:to-[#e5b842] text-[#070f26] font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg inline-flex items-center gap-2 gold-glow-btn cursor-pointer transition-all shadow-xl hover:scale-105"
             >
               <span>{cta.buttonConsultation}</span>

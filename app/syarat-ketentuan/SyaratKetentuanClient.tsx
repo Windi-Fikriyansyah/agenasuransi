@@ -11,7 +11,6 @@ import {
   AlertCircle,
   Sparkles,
 } from "lucide-react";
-import { useModal } from "@/components/ModalContext";
 import { Icon } from "@/components/site/Icon";
 import { RichText } from "@/components/site/RichText";
 import {
@@ -32,7 +31,6 @@ export default function SyaratKetentuanClient({
   content = syaratKetentuanDefaults,
   settings = settingsDefaults,
 }: SyaratKetentuanClientProps) {
-  const { openModal } = useModal();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -329,7 +327,7 @@ export default function SyaratKetentuanClient({
               <span>{cta.whatsappButtonText}</span>
             </button>
             <button
-              onClick={openModal}
+              onClick={() => openWhatsApp()}
               className="w-full sm:w-auto justify-center border border-[#1f3775] hover:border-[#e5b842] text-slate-200 hover:text-white font-semibold text-xs sm:text-sm px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg inline-flex items-center gap-2 transition-all hover:bg-[#0b1638] cursor-pointer active:scale-95 text-center"
             >
               <Phone className="w-4 h-4 text-[#e5b842] shrink-0" />
