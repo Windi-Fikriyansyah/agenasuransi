@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Broker Penjaminan Proyek",
     ],
     alternates: {
-      canonical: "https://niagajaminannusantara.co.id/tentang-kami",
+      canonical: "https://www.niagajaminan.com/tentang-kami",
     },
     openGraph: {
       title:
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         seo?.description ||
         "Mitra terpercaya dalam menyediakan solusi jaminan dan perlindungan risiko bisnis di Indonesia sejak tahun 2020.",
-      url: "https://niagajaminannusantara.co.id/tentang-kami",
+      url: "https://www.niagajaminan.com/tentang-kami",
       siteName: "PT Niaga Jaminan Nusantara",
       locale: "id_ID",
       type: "website",

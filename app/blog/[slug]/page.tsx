@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const siteUrl = "https://niagajaminannusantara.co.id";
+  const siteUrl = "https://www.niagajaminan.com";
   const canonicalUrl = `${siteUrl}/blog/${article.slug}`;
 
   return {
@@ -129,18 +129,18 @@ export default async function BlogDetailPage({ params }: Props) {
     "@graph": [
       {
         "@type": "BlogPosting",
-        "@id": `https://niagajaminannusantara.co.id/blog/${article.slug}#article`,
+        "@id": `https://www.niagajaminan.com/blog/${article.slug}#article`,
         "isPartOf": {
           "@type": "WebSite",
-          "@id": "https://niagajaminannusantara.co.id/#website",
+          "@id": "https://www.niagajaminan.com/#website",
           "name": "PT Niaga Jaminan Nusantara",
-          "url": "https://niagajaminannusantara.co.id",
+          "url": "https://www.niagajaminan.com",
         },
         "headline": article.title,
         "description": article.summary,
         "datePublished": article.isoDate,
         "dateModified": article.isoDate,
-        "mainEntityOfPage": `https://niagajaminannusantara.co.id/blog/${article.slug}`,
+        "mainEntityOfPage": `https://www.niagajaminan.com/blog/${article.slug}`,
         "inLanguage": "id-ID",
         "author": {
           "@type": "Person",
@@ -150,10 +150,10 @@ export default async function BlogDetailPage({ params }: Props) {
         "publisher": {
           "@type": "Organization",
           "name": "PT Niaga Jaminan Nusantara",
-          "url": "https://niagajaminannusantara.co.id",
+          "url": "https://www.niagajaminan.com",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://niagajaminannusantara.co.id/images/logo.png",
+            "url": "https://www.niagajaminan.com/images/logo.png",
           },
         },
         "keywords": article.tags.join(", "),
@@ -161,31 +161,31 @@ export default async function BlogDetailPage({ params }: Props) {
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://niagajaminannusantara.co.id/blog/${article.slug}#breadcrumb`,
+        "@id": `https://www.niagajaminan.com/blog/${article.slug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://niagajaminannusantara.co.id",
+            "item": "https://www.niagajaminan.com",
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://niagajaminannusantara.co.id/blog",
+            "item": "https://www.niagajaminan.com/blog",
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": article.category,
-            "item": "https://niagajaminannusantara.co.id/blog",
+            "item": "https://www.niagajaminan.com/blog",
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": article.title,
-            "item": `https://niagajaminannusantara.co.id/blog/${article.slug}`,
+            "item": `https://www.niagajaminan.com/blog/${article.slug}`,
           },
         ],
       },

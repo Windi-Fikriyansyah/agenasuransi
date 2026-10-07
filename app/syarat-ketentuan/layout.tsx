@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "PT Niaga Jaminan Nusantara",
     ],
     alternates: {
-      canonical: "https://niagajaminannusantara.co.id/syarat-ketentuan",
+      canonical: "https://www.niagajaminan.com/syarat-ketentuan",
     },
     openGraph: {
       title:
@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         seo?.description ||
         "Panduan dan checklist persyaratan lengkap penerbitan Bank Garansi dan Surety Bond dari PT Niaga Jaminan Nusantara.",
-      url: "https://niagajaminannusantara.co.id/syarat-ketentuan",
+      url: "https://www.niagajaminan.com/syarat-ketentuan",
       siteName: "PT Niaga Jaminan Nusantara",
       locale: "id_ID",
       type: "website",

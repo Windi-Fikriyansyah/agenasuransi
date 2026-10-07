@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "WhatsApp Bank Garansi",
     ],
     alternates: {
-      canonical: "https://niagajaminannusantara.co.id/kontak-kami",
+      canonical: "https://www.niagajaminan.com/kontak-kami",
     },
     openGraph: {
       title:
@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         seo?.description ||
         "Hubungi konsultan resmi kami untuk penerbitan Bank Garansi & Surety Bond cepat tanpa agunan di seluruh Indonesia.",
-      url: "https://niagajaminannusantara.co.id/kontak-kami",
+      url: "https://www.niagajaminan.com/kontak-kami",
       siteName: "PT Niaga Jaminan Nusantara",
       locale: "id_ID",
       type: "website",

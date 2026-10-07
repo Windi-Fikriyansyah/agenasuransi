@@ -15,7 +15,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     if (typeof window !== "undefined") {
       return `${window.location.origin}/blog/${slug}`;
     }
-    return `https://niagajaminannusantara.co.id/blog/${slug}`;
+    return `https://www.niagajaminan.com/blog/${slug}`;
   };
 
   const handleCopy = () => {
@@ -89,11 +89,10 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
       {/* Copy Link */}
       <button
         onClick={handleCopy}
-        className={`text-xs px-2.5 py-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1 ${
-          copied
+        className={`text-xs px-2.5 py-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1 ${copied
             ? "bg-[#e5b842] text-[#070f26] border-[#e5b842] font-bold"
             : "bg-[#0b1638] text-slate-300 hover:text-white border-[#1b2f69] hover:border-[#e5b842]"
-        }`}
+          }`}
         title="Salin tautan artikel"
       >
         {copied ? (
